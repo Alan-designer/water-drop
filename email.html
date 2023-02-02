@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/email.ico">
+    <title>Esqueceu sua senha?</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #eff0f4;
+    }
+
+    .container {
+        position: relative;
+        width: 400px;
+        padding: 30px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid #666;
+        gap: 10px;
+        padding-bottom: 70px;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0005);
+    }
+
+    .container h2{
+        color:#666;
+        font-weight: 500;
+    }
+
+    .container .inputBox{
+        position: relative;
+        width: 100%;
+        top: 20px;
+    }
+
+    .container .inputBox input{
+        position: relative;
+        width: 100%;
+        background: #eff0f4;
+        border: none;
+        outline: none;
+        padding: 10px;
+        color: #000;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    .container .inputBox button{
+        position: relative;
+        width: 100%;
+        background: #eff0f4;
+        border: none;
+        outline: none;
+        padding: 10px;
+        color: #000;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    .inputBox button:hover{
+        background: #00CED1;
+    }
+    
+</style>
+<body>
+    <form action="check.html">
+        <div class="container weak">
+            <h2>Informe seu Email</h2>
+            <div class="inputBox">
+                <input type="email" name="email" id="email" placeholder="Digite seu email">
+            </div>
+            <div class="inputBox">
+                <button onclick="alert('Código de verificação enviado!')"><a href="check.html">ENVIAR</a></button>
+            </div>
+        </div>
+    </form>
+</body>
+<Script>
+    
+</Script>
+</html>

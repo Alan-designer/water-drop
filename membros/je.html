@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="funcionaria.ico">
+    <title>JENIFER | OPERANTE</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #eff0f4;
+    }
+
+    .card {
+        position: relative;
+        width: 350px;
+        height: 225px;
+        background: #eff0f4;
+        transition: 0.5s;
+    }
+
+    .card:hover {
+        height: 440px;
+    }
+
+    .card .lines {
+        position: absolute;
+        inset: 0;
+        background: #888;
+        overflow: hidden;
+    }
+
+    .card .lines::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 120px;
+        background: linear-gradient(transparent, #800000, #800000, #800000, transparent);
+        animation: animate 4s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    .card .lines::after {
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: #fff;
+    }
+
+    .card .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .card .content .details {
+        padding: 40px;
+        text-align: center;
+        width: 100%;
+        transition: 0.5s;
+        transform: translateY(10px);
+    }
+
+    .card .content .details {
+        font-size: 1.25em;
+        font-weight: 400;
+    }
+
+    .card .content .details button {
+        padding: 10px 30px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: 1em;
+        font-weight: 500;
+        color: #000;
+        background: #800000;
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+
+    h2 {
+        letter-spacing: 10px;
+    }
+</style>
+
+<body>
+    <div class="card">
+        <div class="lines"></div>
+        <div class="content">
+            <div class="details">
+                <h2>Jenifer</h2><br>
+                <h3><span>Operante</span></h3><br>
+                <div class="data">
+                    <h3><span>Sobre</span><br></h3><br>
+                    <p><span>Neste projeto eu participei como Operante de um projeto social, mas caso surgir alguma
+                            duvida aqui está meu curriculo</span></p>
+                </div><br>
+                <button><a href="jenifer.pdf.pdf" target="_blank">Meu curriculo</a></button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

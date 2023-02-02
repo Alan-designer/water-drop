@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/senha.ico">
+    <title>Criar nova senha</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #eff0f4;
+    }
+
+    .container {
+        position: relative;
+        width: 400px;
+        padding: 30px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid gray;
+        gap: 10px;
+        padding-bottom: 70px;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0005);
+    }
+
+    .container h2 {
+        color: #666;
+        font-weight: 500;
+    }
+
+    .container .inputBox {
+        position: relative;
+        width: 100%;
+    }
+
+    .container .inputBox input {
+        position: relative;
+        width: 100%;
+        background: #eff0f4;
+        border: none;
+        outline: none;
+        padding: 10px;
+        color: #000;
+        font-size: 1.1em;
+    }
+
+    .container .strengthMeter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #222;
+    }
+
+    .container .strengthMeter::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 100%;
+        transition: 0.5s;
+    }
+
+    .container.weak .strengthMeter::before {
+        width: 10%;
+        background: #f00;
+        filter: drop-shadow(0 0 5px #f00) drop-shadow(0 0 10px #f00) drop-shadow(0 0 20px #f00);
+    }
+
+    .container.medium .strengthMeter::before {
+        width: 66.66%;
+        background: #ffa500;
+        filter: drop-shadow(0 0 5px #ffa500) drop-shadow(0 0 10px #ffa500) drop-shadow(0 0 20px #ffa500);
+    }
+
+    .container.strong .strengthMeter::before {
+        width: 100%;
+        background: #0f8;
+        filter: drop-shadow(0 0 5px #0f8) drop-shadow(0 0 10px #0f8) drop-shadow(0 0 20px #0f8);
+    }
+
+    .container .strengthMeter::after {
+        position: absolute;
+        top: -45px;
+        left: 30px;
+        color: #000;
+        transition: 0.5s;
+    }
+
+    .container.weak .strengthMeter::after {
+        content: 'Sua senha é fraca';
+        color: #f00;
+        filter: drop-shadow(0 0 5px #f00);
+    }
+
+    .container.medium .strengthMeter::after {
+        content: 'Sua senha é média';
+        color: #ffa500;
+        filter: drop-shadow(0 0 5px #ffa500);
+    }
+
+    .container.strong .strengthMeter::after {
+        content: 'Sua senha é forte';
+        color: #0f8;
+        filter: drop-shadow(0 0 5px #0f8);
+    }
+
+    .show {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 65px;
+        height: 100%;
+        background: #fff;
+        border: 6px solid #eff0f4;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show::before {
+        content: 'Mostrar';
+        font-size: 0.6em;
+        letter-spacing: 0.15;
+        text-transform: uppercase;
+    }
+
+    .show.hide::before {
+        content: 'ocultar';
+    }
+
+    input[type="submit"] {
+        cursor: pointer;
+        transition: 0.8s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0f8;
+    }
+</style>
+
+<body>
+    <form action="password.html">
+        <div class="container">
+            <h2>Crie uma nova senha</h2>
+
+            <div class="inputBox">
+                <input type="password" placeholder="Senha" id="myPassword">
+                <div class="show"></div>
+            </div>
+            <div class="strengthMeter"></div>
+            <div class="inputBox">
+                <input type="submit" value="Trocar">
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    function Strength(password) {
+        let i = 0;
+        if (password.length > 6) {
+            i++;
+        }
+        if (password.length >= 10) {
+            i++;
+        }
+        if (/[A-Z]/.test(password)) {
+            i++;
+        }
+        if (/[0-9]/.test(password)) {
+            i++;
+        }
+        if (/[A-Za-z0-8]/.test(password)) {
+            i++;
+        }
+        return i;
+    }
+
+    let container = document.querySelector('.container');
+    document.addEventListener("keyup", function (e) {
+        let password = document.querySelector
+            ('#myPassword').value;
+
+        let strength = Strength(password);
+        if (strength <= 2) {
+            container.classList.add('weak');
+            container.classList.remove('medium');
+            container.classList.remove('strong');
+        }
+        else if (strength >= 2 && strength <= 4) {
+            container.classList.remove('weak');
+            container.classList.add('medium');
+            container.classList.remove('strong');
+        }
+        else {
+            container.classList.remove('weak');
+            container.classList.remove('medium');
+            container.classList.add('strong');
+        }
+    })
+
+    let pswrd = document.querySelector('#myPassword');
+    let show = document.querySelector('.show');
+    show.onclick = function () {
+        if (pswrd.type === 'password') {
+            pswrd.setAttribute('type', 'text');
+            show.classList.add('hide')
+        }
+        else {
+            pswrd.setAttribute('type', 'password');
+            show.classList.remove('hide')
+        }
+    }
+</script>
+
+</html>

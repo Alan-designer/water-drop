@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metarmofose</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #eff0f4;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 40px 0;
+    }
+
+    .container .box {
+        position: relative;
+        width: 2000px;
+        height: 1500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 30px;
+        transition: 0.5s;
+    }
+
+    .container .box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        background: #fff;
+        border-radius: 8px;
+        transition: 0.5s;
+    }
+
+    .container .box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background: #fff;
+        border-radius: 8px;
+        transition: 0.5s;
+        filter: blur(30px);
+        transition: 0.5s;
+    }
+
+    .container .box:nth-child(1):before,
+    .container .box:nth-child(1):after {
+        background: linear-gradient(#fff, #333) ;
+    }
+
+    .container .box span {
+        display: block;
+        position: absolute;
+        top: -30px;
+        left: 450px;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        pointer-events: none;
+    }
+
+    .container .box span::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transition: 0.5s;
+        animation: animate 2s ease-in-out infinite;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .container .box:hover span::before {
+        top: 50px;
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+    }
+
+    .container .box span::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transition: 0.5s;
+        animation: animate 2s ease-in-out infinite;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        animation-delay: -1s;
+    }
+
+    .container .box:hover span::after {
+        bottom: 25px;
+        right: 450px;
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+    }
+
+    @keyframes animate {
+
+        0%,
+        100% {
+            transform: translateY(10px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .container .box .content {
+        position: relative;
+        left: 0px;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.05s);
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        transition: 0.5s;
+        z-index: 1;
+        color: #fff;
+        width: 1500px;
+        height: 1200px;
+    }
+
+    .container .box .content h2{
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.container .box .content p{
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <span></span>
+            <div class="content">
+                <h2>Meta</h2>
+                <p>teste</p>
+                <a href="#">ver mais</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
